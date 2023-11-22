@@ -1,0 +1,1219 @@
+definitions:
+  api.AuctionVehicleResponse:
+    properties:
+      details:
+        type: string
+      id:
+        type: integer
+      images:
+        items:
+          $ref: '#/definitions/api.ImageResponse'
+        type: array
+      vehicle_id:
+        type: integer
+    type: object
+  api.ErrorResponse:
+    properties:
+      error:
+        type: string
+    type: object
+  api.FuelingRecordResponse:
+    properties:
+      after_fueling_image:
+        type: string
+      amount:
+        type: number
+      before_fueling_image:
+        type: string
+      created_at:
+        type: string
+      fueling_person_id:
+        type: integer
+      gas_station:
+        description: omitempty if the field is optional
+        type: string
+      id:
+        type: integer
+      notes:
+        description: omitempty if the field is optional
+        type: string
+      total_cost:
+        type: number
+      updated_at:
+        type: string
+      vehicle_id:
+        type: integer
+    type: object
+  api.ImageResponse:
+    properties:
+      id:
+        type: integer
+      url:
+        type: string
+    type: object
+  api.ReportForSwagger:
+    properties:
+      fueling_records:
+        items:
+          $ref: '#/definitions/api.myFuelingRecord'
+        type: array
+      maintenance_records:
+        items:
+          $ref: '#/definitions/api.myMaintenanceRecord'
+        type: array
+      vehicle:
+        $ref: '#/definitions/api.createVehicleResponse'
+    type: object
+  api.assignVehicleRequest:
+    properties:
+      user_id:
+        type: integer
+      vehicle_id:
+        type: integer
+    type: object
+  api.createMaintenanceRecordRequest:
+    properties:
+      maintenance_date:
+        type: string
+      maintenance_person_id:
+        type: integer
+      mileage_at_service:
+        type: integer
+      notes:
+        type: string
+      service_type:
+        type: string
+      status:
+        type: string
+      total_cost:
+        type: number
+      vehicle_id:
+        type: integer
+    type: object
+  api.createMaintenanceRecordResponse:
+    properties:
+      maintenance_date:
+        type: string
+      maintenance_person_id:
+        type: integer
+      mileage_at_service:
+        type: integer
+      notes:
+        type: string
+      service_type:
+        type: string
+      status:
+        type: string
+      total_cost:
+        type: number
+      vehicle_id:
+        type: integer
+    type: object
+  api.createTaskRequest:
+    properties:
+      driver_id:
+        type: integer
+      end_latitude:
+        type: number
+      end_longitude:
+        type: number
+      end_time:
+        type: string
+      notes:
+        type: string
+      start_latitude:
+        type: number
+      start_longitude:
+        type: number
+      start_time:
+        type: string
+      status:
+        type: string
+    type: object
+  api.createTaskResponse:
+    properties:
+      ID:
+        type: integer
+      driver_id:
+        type: integer
+      end_latitude:
+        type: number
+      end_longitude:
+        type: number
+      end_time:
+        type: string
+      notes:
+        type: string
+      start_latitude:
+        type: number
+      start_longitude:
+        type: number
+      start_time:
+        type: string
+      status:
+        type: string
+    type: object
+  api.createUserRequest:
+    properties:
+      address:
+        type: string
+      driving_license_number:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      goverment_id:
+        type: string
+      last_name:
+        type: string
+      middle_name:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      role:
+        type: string
+      status:
+        type: string
+      username:
+        type: string
+    type: object
+  api.createVehicleRequest:
+    properties:
+      assigned_driver:
+        type: integer
+      car_model:
+        type: string
+      color:
+        type: string
+      current_mileage:
+        type: integer
+      last_maintenance:
+        type: string
+      license_plate:
+        type: string
+      make:
+        type: string
+      next_maintenance:
+        type: string
+      notes:
+        type: string
+      sitting_capacity:
+        type: integer
+      status:
+        type: string
+      type:
+        type: string
+      vin:
+        type: string
+      year:
+        type: integer
+    type: object
+  api.createVehicleResponse:
+    properties:
+      ID:
+        type: integer
+      assigned_driver:
+        type: integer
+      car_model:
+        type: string
+      color:
+        type: string
+      current_mileage:
+        type: integer
+      last_maintenance:
+        type: string
+      license_plate:
+        type: string
+      make:
+        type: string
+      next_maintenance:
+        type: string
+      notes:
+        type: string
+      sitting_capacity:
+        type: integer
+      status:
+        type: string
+      type:
+        type: string
+      vin:
+        type: string
+      year:
+        type: integer
+    type: object
+  api.deleteUserResponse:
+    type: object
+  api.getUserResponse:
+    properties:
+      ID:
+        type: integer
+      address:
+        type: string
+      driving_license_number:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      goverment_id:
+        type: string
+      last_name:
+        type: string
+      middle_name:
+        type: string
+      phone_number:
+        type: string
+      role:
+        type: string
+      status:
+        type: string
+      username:
+        type: string
+    type: object
+  api.loginRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  api.loginResponse:
+    properties:
+      access_token:
+        type: string
+      user:
+        $ref: '#/definitions/api.userResponse'
+    type: object
+  api.myFuelingRecord:
+    properties:
+      after_fueling_image:
+        type: string
+      amount:
+        type: number
+      before_fueling_image:
+        type: string
+      fueling_person_id:
+        type: integer
+      gas_station:
+        type: string
+      notes:
+        type: string
+      total_cost:
+        type: number
+      vehicle_id:
+        type: integer
+    type: object
+  api.myMaintenanceRecord:
+    properties:
+      maintenance_date:
+        type: string
+      maintenance_person_id:
+        type: integer
+      mileage_at_service:
+        type: integer
+      notes:
+        type: string
+      service_type:
+        type: string
+      status:
+        type: string
+      total_cost:
+        description: Parts               []Part             `gorm:"foreignKey:ID"
+          json:"parts"`
+        type: number
+      vehicle_id:
+        type: integer
+    type: object
+  api.registerVehicleRequest:
+    properties:
+      assigned_driver:
+        type: integer
+      car_model:
+        type: string
+      color:
+        type: string
+      current_mileage:
+        type: integer
+      last_maintenance:
+        type: string
+      license_plate:
+        type: string
+      make:
+        type: string
+      next_maintenance:
+        type: string
+      notes:
+        type: string
+      sitting_capacity:
+        type: integer
+      type:
+        type: string
+      vin:
+        type: string
+      year:
+        type: integer
+    type: object
+  api.userResponse:
+    properties:
+      ID:
+        type: integer
+      address:
+        type: string
+      driving_license_number:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      goverment_id:
+        type: string
+      last_name:
+        type: string
+      middle_name:
+        type: string
+      phone_number:
+        type: string
+      role:
+        type: string
+      status:
+        type: string
+      username:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This API serves as a backend for Vehicle Management System
+  title: Vehicle Management System API
+  version: "1.0"
+paths:
+  /auction:
+    get:
+      description: Get all auctions
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with auction details
+          schema:
+            items:
+              $ref: '#/definitions/api.AuctionVehicleResponse'
+            type: array
+      summary: Get all auctions
+      tags:
+      - auction
+    post:
+      consumes:
+      - multipart/form-data
+      description: Admins can create auctions with vehicle details and images
+      parameters:
+      - description: Vehicle ID
+        in: formData
+        name: vehicle_id
+        required: true
+        type: integer
+      - description: Details of the auction
+        in: formData
+        name: details
+        type: string
+      - description: Images for the auction
+        in: formData
+        name: images
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with auction details
+          schema:
+            $ref: '#/definitions/api.AuctionVehicleResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create an auction
+      tags:
+      - auction
+  /auction/{id}:
+    delete:
+      description: Delete an auction
+      parameters:
+      - description: Auction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with message
+          schema:
+            type: string
+      security:
+      - ApiKeyAuth: []
+      summary: Delete an auction
+      tags:
+      - auction
+    get:
+      description: Get an auction
+      parameters:
+      - description: Auction ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with auction details
+          schema:
+            $ref: '#/definitions/api.AuctionVehicleResponse'
+      summary: Get an auction
+      tags:
+      - auction
+  /fueling:
+    get:
+      description: Get all fueling records
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with fueling record details
+          schema:
+            items:
+              $ref: '#/definitions/api.FuelingRecordResponse'
+            type: array
+        "400":
+          description: Bad Request with error message
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get all fueling records
+      tags:
+      - fueling
+    post:
+      consumes:
+      - multipart/form-data
+      description: Admins and fueling personnel can create fueling records
+      parameters:
+      - description: Vehicle ID
+        in: formData
+        name: vehicle_id
+        required: true
+        type: integer
+      - description: Fueling Person ID
+        in: formData
+        name: fueling_person_id
+        required: true
+        type: integer
+      - description: Amount of fuel
+        in: formData
+        name: amount
+        required: true
+        type: number
+      - description: Total cost of fueling
+        in: formData
+        name: total_cost
+        required: true
+        type: number
+      - description: Gas Station
+        in: formData
+        name: gas_station
+        type: string
+      - description: Additional notes
+        in: formData
+        name: notes
+        type: string
+      - description: Image before fueling
+        in: formData
+        name: before_fueling_image
+        required: true
+        type: file
+      - description: Image after fueling
+        in: formData
+        name: after_fueling_image
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with fueling record details
+          schema:
+            $ref: '#/definitions/api.FuelingRecordResponse'
+        "400":
+          description: Bad Request with error message
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "500":
+          description: Internal Server Error with error message
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create fueling record
+      tags:
+      - fueling
+  /fueling/{id}:
+    delete:
+      description: Delete a fueling record
+      parameters:
+      - description: Fueling Record ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with message
+          schema:
+            type: string
+        "400":
+          description: Bad Request with error message
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found with error message
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a fueling record
+      tags:
+      - fueling
+    get:
+      consumes:
+      - application/json
+      description: Get a fueling record
+      parameters:
+      - description: Fueling Record ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Successful response with fueling record details
+          schema:
+            $ref: '#/definitions/api.FuelingRecordResponse'
+        "400":
+          description: Bad Request with error message
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+        "404":
+          description: Not Found with error message
+          schema:
+            $ref: '#/definitions/api.ErrorResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a fueling record
+      tags:
+      - fueling
+  /login:
+    post:
+      description: Logs user in
+      parameters:
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/api.loginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.loginResponse'
+      summary: Login user
+      tags:
+      - user
+  /maintenance:
+    get:
+      consumes:
+      - application/json
+      description: Get all maintenance records if user
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.createMaintenanceRecordResponse'
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: Get all maintenance records of particular user
+      tags:
+      - maintenance
+    post:
+      consumes:
+      - application/json
+      description: Create a maintenance record
+      parameters:
+      - description: Maintenance
+        in: body
+        name: maintenance
+        required: true
+        schema:
+          $ref: '#/definitions/api.createMaintenanceRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createMaintenanceRecordResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a maintenance record
+      tags:
+      - maintenance
+  /maintenance/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a maintenance record
+      parameters:
+      - description: Maintenance ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createMaintenanceRecordResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a maintenance record
+      tags:
+      - maintenance
+    get:
+      consumes:
+      - application/json
+      description: Get a maintenance record
+      parameters:
+      - description: Maintenance ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createMaintenanceRecordResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a maintenance record
+      tags:
+      - maintenance
+    put:
+      consumes:
+      - application/json
+      description: Update a maintenance record
+      parameters:
+      - description: Maintenance ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Maintenance
+        in: body
+        name: maintenance
+        required: true
+        schema:
+          $ref: '#/definitions/api.createMaintenanceRecordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createMaintenanceRecordResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a maintenance record
+      tags:
+      - maintenance
+  /report/{vehicle_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get a report
+      parameters:
+      - description: Vehicle ID
+        in: path
+        name: vehicle_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.ReportForSwagger'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a report
+      tags:
+      - report
+  /task:
+    get:
+      consumes:
+      - application/json
+      description: Get all tasks
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/api.createTaskResponse'
+              type: array
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: Get all tasks
+      tags:
+      - task
+    post:
+      consumes:
+      - application/json
+      description: Create a task
+      parameters:
+      - description: Task
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/api.createTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createTaskResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a task
+      tags:
+      - task
+  /task/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a task
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createTaskResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a task
+      tags:
+      - task
+    get:
+      consumes:
+      - application/json
+      description: Get a task
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createTaskResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a task
+      tags:
+      - task
+    put:
+      consumes:
+      - application/json
+      description: Update a task
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Task
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/api.createTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createTaskResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a task
+      tags:
+      - task
+  /user:
+    get:
+      description: Gets all users from database
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.getUserResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get users
+      tags:
+      - user
+    post:
+      description: Creates and saves user to database
+      parameters:
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/api.createUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create user
+      tags:
+      - user
+  /user/{id}:
+    delete:
+      description: Deletes user from database
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.deleteUserResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete user
+      tags:
+      - user
+    get:
+      description: Gets user from database
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.getUserResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get user
+      tags:
+      - user
+    put:
+      description: Updates user in database
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/api.createUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.userResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update user
+      tags:
+      - user
+  /vehicle:
+    get:
+      description: Get all vehicles
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/api.createVehicleResponse'
+              type: array
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: Get all vehicles
+      tags:
+      - vehicle
+    post:
+      consumes:
+      - application/json
+      description: Create a vehicle
+      parameters:
+      - description: Vehicle
+        in: body
+        name: vehicle
+        required: true
+        schema:
+          $ref: '#/definitions/api.createVehicleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createVehicleResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Create a vehicle
+      tags:
+      - vehicle
+  /vehicle/{id}:
+    delete:
+      description: Delete a vehicle
+      parameters:
+      - description: Vehicle ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a vehicle
+      tags:
+      - vehicle
+    get:
+      description: Get a vehicle
+      parameters:
+      - description: Vehicle ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createVehicleResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a vehicle
+      tags:
+      - vehicle
+    post:
+      description: Changes status of pending vehicles to Active
+      parameters:
+      - description: Vehicle ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.createVehicleResponse'
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: Activate pending vehicle
+      tags:
+      - vehicle
+    put:
+      consumes:
+      - application/json
+      description: Update a vehicle
+      parameters:
+      - description: Vehicle ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Vehicle
+        in: body
+        name: vehicle
+        required: true
+        schema:
+          $ref: '#/definitions/api.createVehicleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createVehicleResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Update a vehicle
+      tags:
+      - vehicle
+  /vehicle/assign:
+    post:
+      consumes:
+      - application/json
+      description: Assign a vehicle to a driver
+      parameters:
+      - description: Vehicle
+        in: body
+        name: vehicle
+        required: true
+        schema:
+          $ref: '#/definitions/api.assignVehicleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.userResponse'
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: Assign a vehicle to a driver
+      tags:
+      - vehicle
+  /vehicle/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a vehicle
+      parameters:
+      - description: Vehicle
+        in: body
+        name: vehicle
+        required: true
+        schema:
+          $ref: '#/definitions/api.registerVehicleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.createVehicleResponse'
+      security:
+      - ApiKeyAuth: []
+      summary: Register a vehicle
+      tags:
+      - vehicle
+  /vehicle/unassign:
+    post:
+      consumes:
+      - application/json
+      description: Unassign a vehicle from a driver
+      parameters:
+      - description: Vehicle
+        in: body
+        name: vehicle
+        required: true
+        schema:
+          $ref: '#/definitions/api.assignVehicleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/api.userResponse'
+            type: array
+      security:
+      - ApiKeyAuth: []
+      summary: Unassign a vehicle from a driver
+      tags:
+      - vehicle
+schemes:
+- http
+- https
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
