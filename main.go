@@ -19,7 +19,7 @@ func ensureUploadsDir() {
 // @title Vehicle Management System API
 // @version 1.0
 // @description This API serves as a backend for Vehicle Management System
-// @host 	localhost:8080
+// @host 	https://swebackend-production.up.railway.app
 // @BasePath: /api
 // @schemes http https
 // @SecurityDefinitions.apikey ApiKeyAuth
