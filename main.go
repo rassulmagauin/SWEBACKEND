@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 
@@ -27,7 +28,7 @@ func ensureUploadsDir() {
 // @name Authorization
 func main() {
 	config.Connect()
-	serverAddress := os.Getenv("SERVER_ADDRESS")
+	serverAddress := fmt.Sprintf("%s:%s", os.Getenv("SERVER_ADDRESS"), os.Getenv("PORT"))
 	server, err := api.NewServer(config.DB)
 	if err != nil {
 		log.Fatal("Cannot create server: ", err)
