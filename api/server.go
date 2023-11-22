@@ -45,7 +45,7 @@ func errorResponse(err error) gin.H {
 func (server *Server) setupRouter() {
 	router := gin.Default()
 	router.Static("/static", "./uploads")
-	swaggerHost := os.Getenv("SWAGGER_HOST")
+	swaggerHost := os.Getenv("HOST")
 	if swaggerHost == "" {
 		swaggerHost = "localhost:8080" // Default value for local development
 	}
