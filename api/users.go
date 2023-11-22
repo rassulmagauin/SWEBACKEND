@@ -68,11 +68,11 @@ func newUserResonse(user models.User) userResponse {
 // @Router /user [post]
 // @Security ApiKeyAuth
 func (s *Server) CreateUser(c *gin.Context) {
-	authPayload := c.MustGet(authorizationPayloadKey).(*token.Payload)
-	if authPayload.Role != "Admin" {
-		c.JSON(400, errorResponse(errors.New("only admins can create users")))
-		return
-	}
+	// authPayload := c.MustGet(authorizationPayloadKey).(*token.Payload)
+	// if authPayload.Role != "Admin" {
+	// 	c.JSON(400, errorResponse(errors.New("only admins can create users")))
+	// 	return
+	// }
 	var userReq createUserRequest
 	if err := c.ShouldBindJSON(&userReq); err != nil {
 		c.JSON(400, errorResponse(err))
@@ -126,7 +126,7 @@ type getUserResponse struct {
 // @Description Gets all users from database
 // @Produce application/json
 // @Tags user
-// @Success 200 {object} getUserResponse{}
+// @Success 200 {object} []getUserResponse{}
 // @Router /user [get]
 // @Security ApiKeyAuth
 func (s *Server) GetUsers(c *gin.Context) {
