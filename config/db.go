@@ -1,6 +1,10 @@
 package config
 
 import (
+	"fmt"
+	"os"
+
+	"github.com/joho/godotenv"
 	"github.com/rassulmagauin/VMS_SWE/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -9,10 +13,26 @@ import (
 var DB *gorm.DB
 
 func Connect() {
-	db, err := gorm.Open(postgres.Open("host=localhost user=root password=sweteam3 dbname=root port=5555 sslmode=disable"), &gorm.Config{})
+	err := godotenv.Load()
 	if err != nil {
 		panic(err)
 	}
+	host := os.Getenv("DB_HOST")
+	user := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASSWORD")
+	dbname := os.Getenv("DB_NAME")
+	port := os.Getenv("DB_PORT")
+	sslmode := os.Getenv("DB_SSLMODE") // if you're using SSL
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s", host, user, password, dbname, port, sslmode)
+	if host == "" {
+		host = "localhost"
+	}
+
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic(err)
+	}
+
 	db.Exec(`
     CREATE TYPE task_status AS ENUM ('completed', 'canceled', 'delayed'); 
     CREATE TYPE vehicle_status AS ENUM ('Active', 'Inactive', 'Maintenance'); 

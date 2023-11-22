@@ -9,10 +9,6 @@ import (
 	_ "github.com/rassulmagauin/VMS_SWE/docs"
 )
 
-const (
-	serverAddress = "0.0.0.0:8080"
-)
-
 func ensureUploadsDir() {
 	path := "./uploads"
 	if _, err := os.Stat(path); os.IsNotExist(err) {
@@ -31,6 +27,7 @@ func ensureUploadsDir() {
 // @name Authorization
 func main() {
 	config.Connect()
+	serverAddress := os.Getenv("SERVER_ADDRESS")
 	server, err := api.NewServer(config.DB)
 	if err != nil {
 		log.Fatal("Cannot create server: ", err)
