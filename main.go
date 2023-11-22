@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -28,13 +27,18 @@ func ensureUploadsDir() {
 // @name Authorization
 func main() {
 	config.Connect()
-	serverAddress := fmt.Sprintf("%s:%s", os.Getenv("SERVER_ADDRESS"), os.Getenv("PORT"))
 	server, err := api.NewServer(config.DB)
 	if err != nil {
 		log.Fatal("Cannot create server: ", err)
 	}
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // default port if not specified
+	}
+
 	ensureUploadsDir()
-	err = server.Run(serverAddress)
+	// Run the server
+	err = server.Run(":" + port)
 	if err != nil {
 		log.Fatal("Cannot start server: ", err)
 	}
