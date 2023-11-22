@@ -66,7 +66,6 @@ func newUserResonse(user models.User) userResponse {
 // @Tags user
 // @Success 200 {object} userResponse{}
 // @Router /user [post]
-// @Security ApiKeyAuth
 func (s *Server) CreateUser(c *gin.Context) {
 	// authPayload := c.MustGet(authorizationPayloadKey).(*token.Payload)
 	// if authPayload.Role != "Admin" {

@@ -55,7 +55,7 @@ func (server *Server) setupRouter() {
 	authRoutes.POST("/vehicle/:id", server.ActivateVehicle)
 	authRoutes.POST("/vehicle/register", server.RegisterVehicle)
 
-	authRoutes.POST("/user", server.CreateUser)
+	router.POST("/user", server.CreateUser)
 	authRoutes.GET("/user", server.GetUsers)
 	authRoutes.GET("/user/:id", server.GetUser)
 	authRoutes.PUT("/user/:id", server.UpdateUser)

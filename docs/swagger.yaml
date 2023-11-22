@@ -907,7 +907,9 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/api.getUserResponse'
+            items:
+              $ref: '#/definitions/api.getUserResponse'
+            type: array
       security:
       - ApiKeyAuth: []
       summary: Get users
@@ -929,8 +931,6 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.userResponse'
-      security:
-      - ApiKeyAuth: []
       summary: Create user
       tags:
       - user

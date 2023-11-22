@@ -834,17 +834,15 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.getUserResponse"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/api.getUserResponse"
+                            }
                         }
                     }
                 }
             },
             "post": {
-                "security": [
-                    {
-                        "ApiKeyAuth": []
-                    }
-                ],
                 "description": "Creates and saves user to database",
                 "produces": [
                     "application/json"
