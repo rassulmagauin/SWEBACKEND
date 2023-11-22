@@ -1,6 +1,5 @@
 {
     "schemes": [
-        "http",
         "https"
     ],
     "swagger": "2.0",
@@ -10,6 +9,7 @@
         "contact": {},
         "version": "1.0"
     },
+    "host": "swebackend-production.up.railway.app",
     "paths": {
         "/auction": {
             "get": {

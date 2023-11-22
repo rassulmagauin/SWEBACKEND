@@ -5,6 +5,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	_ "github.com/rassulmagauin/VMS_SWE/docs"
 	"github.com/rassulmagauin/VMS_SWE/token"
@@ -44,12 +45,20 @@ func errorResponse(err error) gin.H {
 
 func (server *Server) setupRouter() {
 	router := gin.Default()
+
+	router.Use(cors.New(cors.Config{
+		AllowAllOrigins:  true,
+		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 	router.Static("/static", "./uploads")
 	swaggerHost := os.Getenv("HOST")
 	if swaggerHost == "" {
 		swaggerHost = "localhost:8080" // Default value for local development
 	}
-	swaggerURL := fmt.Sprintf("http://%s/docs/doc.json", swaggerHost)
+	swaggerURL := fmt.Sprintf("https://%s/docs/doc.json", swaggerHost)
 	router.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.URL(swaggerURL)))
 
 	authRoutes := router.Group("/").Use(authMiddleware(server.tokenMaker))

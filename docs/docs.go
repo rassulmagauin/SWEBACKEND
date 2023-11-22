@@ -1910,9 +1910,9 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "1.0",
-	Host:             "",
+	Host:             "swebackend-production.up.railway.app",
 	BasePath:         "",
-	Schemes:          []string{"http", "https"},
+	Schemes:          []string{"https"},
 	Title:            "Vehicle Management System API",
 	Description:      "This API serves as a backend for Vehicle Management System",
 	InfoInstanceName: "swagger",

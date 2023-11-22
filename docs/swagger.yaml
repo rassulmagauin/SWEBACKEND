@@ -383,6 +383,7 @@ definitions:
       username:
         type: string
     type: object
+host: swebackend-production.up.railway.app
 info:
   contact: {}
   description: This API serves as a backend for Vehicle Management System
@@ -1208,7 +1209,6 @@ paths:
       tags:
       - vehicle
 schemes:
-- http
 - https
 securityDefinitions:
   ApiKeyAuth:
