@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -44,7 +45,12 @@ func errorResponse(err error) gin.H {
 func (server *Server) setupRouter() {
 	router := gin.Default()
 	router.Static("/static", "./uploads")
-	router.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	swaggerHost := os.Getenv("SWAGGER_HOST")
+	if swaggerHost == "" {
+		swaggerHost = "localhost:8080" // Default value for local development
+	}
+	swaggerURL := fmt.Sprintf("http://%s/docs/doc.json", swaggerHost)
+	router.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, ginSwagger.URL(swaggerURL)))
 
 	authRoutes := router.Group("/").Use(authMiddleware(server.tokenMaker))
 	authRoutes.POST("/vehicle", server.CreateVehicle)
