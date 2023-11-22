@@ -239,8 +239,9 @@ func convertFilePathToURL(filePath *string) string {
 	if filePath == nil {
 		return ""
 	}
-	// Replace with the actual port number your server is running on
-	return fmt.Sprintf("http://localhost:8080/static/%s", *filePath)
+
+	// Use a relative URL for flexibility
+	return fmt.Sprintf("/static/%s", *filePath)
 }
 
 // GetFuelingRecords godoc
