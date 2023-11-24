@@ -67,11 +67,11 @@ func newUserResonse(user models.User) userResponse {
 // @Success 200 {object} userResponse{}
 // @Router /user [post]
 func (s *Server) CreateUser(c *gin.Context) {
-	authPayload := c.MustGet(authorizationPayloadKey).(*token.Payload)
-	if authPayload.Role != "Admin" {
-		c.JSON(400, errorResponse(errors.New("only admins can create users")))
-		return
-	}
+	// authPayload := c.MustGet(authorizationPayloadKey).(*token.Payload)
+	// if authPayload.Role != "Admin" {
+	// 	c.JSON(400, errorResponse(errors.New("only admins can create users")))
+	// 	return
+	// }
 	var userReq createUserRequest
 	if err := c.ShouldBindJSON(&userReq); err != nil {
 		c.JSON(400, errorResponse(err))
