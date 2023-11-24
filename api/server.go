@@ -22,7 +22,7 @@ type Server struct {
 
 const (
 	tokenSymmetricKey   = "12345678901234567890123456789012"
-	AccessTokenDuration = 15 * time.Minute
+	AccessTokenDuration = 45 * time.Minute
 )
 
 func NewServer(DB *gorm.DB) (*Server, error) {
